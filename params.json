@@ -1,0 +1,6 @@
+{
+  "name": "Docker-dpdk",
+  "tagline": "DPDK containers",
+  "body": "Run DPDK on Docker Containers\r\n\r\nThese scripts will create a docker container to build and run dpdk-dev on docker\r\n \r\ndocker-ubuntu-dpdk contains the installation script to help you create ubuntu docker container on ubuntu based host computer.\r\ndocker-rhel-dpdk contains the installation script to help you create rhel docker container on cent os or rhel host computer.\r\nAnd I need to pay my gratitude to https://github.com/jeremyeder/docker-dpdk that provide me information for rhel dpdk support.\r\n\r\nThank you\r\n \r\n\r\n\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
