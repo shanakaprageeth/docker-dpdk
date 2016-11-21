@@ -2,7 +2,7 @@
 FROM ubuntu
 
 # run docker image
-LABEL RUN docker run -it --name ubuntu-dpdk-build
+LABEL RUN docker run -it --name ubuntu-dpdk
 
 # update repos and install required packages
 RUN apt-get update -y
