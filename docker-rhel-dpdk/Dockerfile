@@ -10,6 +10,7 @@ RUN subscription-manager attach --auto
 
 # Install DPDK support packages.
 RUN yum install -y libhugetlbfs-utils libpcap-devel kernel-$(uname -r) kernel-devel-$(uname -r) kernel-headers-$(uname -r) git
+RUN yum groupinstall "Development tools"
 
 # Clone DPDK-dev to the container
 RUN cd && git clone git://dpdk.org/dpdk 
