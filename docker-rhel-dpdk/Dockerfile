@@ -1,5 +1,5 @@
-FROM registry.access.redhat.com/rhel7/rhel-tools
-MAINTAINER jeder@redhat.com
+FROM centos #registry.access.redhat.com/rhel7/rhel-tools
+
 
 # run the container
 LABEL RUN docker run -it --name rhel-dpdk-build 
