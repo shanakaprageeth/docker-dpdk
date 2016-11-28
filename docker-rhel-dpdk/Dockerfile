@@ -1,4 +1,5 @@
-FROM centos #registry.access.redhat.com/rhel7/rhel-tools
+FROM centos 
+#registry.access.redhat.com/rhel7/rhel-tools
 
 
 # run the container
