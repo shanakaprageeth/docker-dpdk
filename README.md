@@ -18,6 +18,9 @@ execute following script with administrative privillages to create the docker co
 ```
 ./install-image-with-docker.sh 
 ```
+OR use my docker-dpdk image on docker hub
+[shanakaprageeth/ubuntu-dpdk](https://hub.docker.com/r/shanakaprageeth/ubuntu-dpdk)
+
 For RHEL
 
 Please edit rhel subscription manager USERNAME and PASSWORD or else set up yum in DOCKERFILE.
