@@ -27,7 +27,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           load: true
-          context: ./docker-ubuntu-dpdk
+          context: docker-ubuntu-dpdk
           file: ./docker-ubuntu-dpdk/Dockerfile
           tags: ${{ env.UBUNTU_DOC_TEST_TAG }}
       - 
@@ -41,6 +41,6 @@ jobs:
         with:
           platforms: linux/amd64
           push: false
-          context: ./docker-ubuntu-dpdk
+          context: docker-ubuntu-dpdk
           file: ./docker-ubuntu-dpdk/Dockerfile
           tags: ${{ env.UBUNTU_DOC_LATEST_TAG }}
