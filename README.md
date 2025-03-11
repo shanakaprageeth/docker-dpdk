@@ -1,3 +1,5 @@
+https://github.com/shanakaprageeth/docker-dpdk/actions/workflows/ci/badge.svg
+
 # docker-dpdk for ubuntu and rhel
 
 These scripts will create a docker container to build and run dpdk-dev on docker in ubuntu or rocylinux/rhel host machines, Please use the same 
