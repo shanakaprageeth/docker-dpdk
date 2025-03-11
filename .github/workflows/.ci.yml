@@ -4,10 +4,10 @@ on:
   push:
 
 env:
-  UBUNTU_DOC_TEST_TAG: shanakaprgeeth/ubuntu24-dpdk:test
-  UBUNTU_DOC_LATEST_TAG: shanakaprgeeth/ubuntu24-dpdk:latest
-  RHEL_DOC_TEST_TAG: shanakaprgeeth/rhel8-dpdk:test
-  RHEL_DOC_LATEST_TAG: shanakaprgeeth/rhel8-dpdk:latest
+  UBUNTU_DOC_TEST_TAG: shanakaprageeth/ubuntu24-dpdk:test
+  UBUNTU_DOC_LATEST_TAG: shanakaprageeth/ubuntu24-dpdk:latest
+  RHEL_DOC_TEST_TAG: shanakaprageeth/rhel8-dpdk:test
+  RHEL_DOC_LATEST_TAG: shanakaprageeth/rhel8-dpdk:latest
 
 jobs:
   ubuntu-dpdk:
