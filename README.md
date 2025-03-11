@@ -1,4 +1,4 @@
-https://github.com/shanakaprageeth/docker-dpdk/actions/workflows/ci/badge.svg
+![Docker build](https://github.com/shanakaprageeth/docker-dpdk/actions/workflows/.ci.yml/badge.svg)
 
 # docker-dpdk for ubuntu and rhel
 
