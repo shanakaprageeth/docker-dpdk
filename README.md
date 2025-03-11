@@ -38,7 +38,7 @@ Afterwards, build and setup dpdk inside the container
 
 ## Old version
 
-Please refer to branch/tag 1.0 for old Docker containers with dpdk-setup.sh
+Please refer to branch/tag 1.0 for old Docker containers with dpdk-setup.sh [1.0](https://github.com/shanakaprageeth/docker-dpdk/tree/1.0.0)
 
 ## Acknowledgments
 * I pay my gratitude dpdk-dev library. dpdk_setup.sh contain shell functions used in dpdk-dev library.
