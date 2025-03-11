@@ -1,6 +1,8 @@
 # docker-dpdk for ubuntu and rhel
 
-These scripts will create a docker container to build and run dpdk-dev on docker in ubuntu or rhel host machines
+These scripts will create a docker container to build and run dpdk-dev on docker in ubuntu or rocylinux/rhel host machines, Please use the same 
+OS container. Ubuntu container contains a prebuild dpdk source. However, rhel or rockylinux container only contains the source configuration that require you to build yourself. Please refer to Dockerfile comments.
+Also you can use the home directory to mount pre-build dpdk source in to docker.
 
 ## Getting Started
 
@@ -8,7 +10,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-RHEL or Ubuntu installation.
+RockyLinux/RHEL or Ubuntu installation.
 DPDK supported NIC.
 Docker-deamon.
 
@@ -16,13 +18,13 @@ Docker-deamon.
 For Ubuntu
 execute following script with administrative privillages to create the docker container.
 ```
-./install-image-with-docker.sh 
+./install-image-with-docker.sh
 ```
 OR 
 use my docker-dpdk image on docker hub
-[shanakaprageeth/ubuntu-dpdk](https://hub.docker.com/r/shanakaprageeth/ubuntu-dpdk)
+[shanakaprageeth/ubuntu-dpdk](https://hub.docker.com/r/shanakaprageeth/ubuntu24-dpdk)
 
-For RHEL
+For RockyLinux/RHEL
 
 Please edit rhel subscription manager USERNAME and PASSWORD or else set up yum in DOCKERFILE.
 execute following script with administrative privillages to create the docker container.
@@ -30,19 +32,11 @@ execute following script with administrative privillages to create the docker co
 ./install-image-with-docker.sh 
 ``` 
 
-Afterwards you could install and use dpdk by using the installation script at 
-``` 
-./dpdk/tools/dpdk-setup.sh
-``` 
+Afterwards, build and setup dpdk inside the container
 
-*Please replace or edit this script to install your own version of dpdk library.
+## Old version
 
-## Running the tests
-
-After the installation. Run dpdk tests using
-``` 
-./dpdk/tools/dpdk-setup.sh
-``` 
+Please refer to branch/tag 1.0 for old Docker containers with dpdk-setup.sh
 
 ## Acknowledgments
 * I pay my gratitude dpdk-dev library. dpdk_setup.sh contain shell functions used in dpdk-dev library.
