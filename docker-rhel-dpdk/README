@@ -1,14 +1,14 @@
-This was developed with the help of 
+Note: Please edit rhel subscription manager USERNAME and PASSWORD or else set up yum in DOCKERFILE.
+additionally, dpdk source configuration works but build fails.
+## docker ubuntu dpdk
+To execute the prebuild container
+```
+./install-image-with-docker.sh
+```
 
-1. Can you run Intel's Data-plane Development Kit (DPDK) in a container?  Yep.
+To build and execute the container
+```
+./install-image-with-docker.sh build
+```
 
-  http://developerblog.redhat.com/2015/06/02/can-you-run-intels-data-plane-development-kit-dpdk-in-a-docker-container-yep/
-
-  
-2. https://github.com/jeremyeder/docker-dpdk
-
-
-Please edit rhel subscription manager USERNAME and PASSWORD or else set up yum in DOCKERFILE.
-
-Then run the install-image-with-docker.sh with administrative privillage to create a docker container with dpdk build and running capabilities.
-
+Build location ~/dpdk/build
