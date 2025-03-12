@@ -18,7 +18,13 @@ RockyLinux/RHEL or Ubuntu installation.
 DPDK supported NIC.
 Docker-deamon.
 
-### Executing
+### Current Prebuild docker images
+```
+docker pull shanakaprageeth/ubuntu24-dpdk
+docker pull shanakaprageeth/rhel8-dpdk
+```
+
+### Executing prebuild images or Building Images yourself
 
 #### For Ubuntu
 execute following script with administrative privillages to create the docker container.
@@ -40,7 +46,7 @@ cd docker-rhel-dpdk
 ./run_docker_dpdk.sh
 ``` 
 
-### About Exeucting the container
+### Container options
 
 Following docker container options and mounts are required for dpdk
 
@@ -65,8 +71,12 @@ docker run --privileged  --cap-add=ALL \
 ```
 
 ## Old version
-
-Please refer to branch/tag 1.0 for old Docker containers with dpdk-setup.sh [1.0](https://github.com/shanakaprageeth/docker-dpdk/tree/1.0.0)
+[depreciated]
+Please refer to branch/tag 1.0 for old Docker images with 16.X dpdk with dpdk-setup.sh [1.0](https://github.com/shanakaprageeth/docker-dpdk/tree/1.0.0)
+```
+# Not managed
+docker pull shanakaprageeth/ubuntu-dpdk
+```
 
 ## Acknowledgments
 * I pay my gratitude dpdk-dev library. dpdk_setup.sh contain shell functions used in dpdk-dev library.
