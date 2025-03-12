@@ -16,16 +16,17 @@ LABEL version="1.0"
 #RUN subscription-manager attach --auto
 
 # Install DPDK support packages.
-RUN dnf update -y
-RUN dnf install -y libhugetlbfs libpcap kernel kernel-devel kernel-headers git pciutils
-RUN dnf groupinstall "Development tools" -y
-RUN dnf install python3-pip numactl-devel -y
+RUN dnf --quiet update -y
+RUN dnf --quiet install -y libhugetlbfs libpcap kernel kernel-devel kernel-headers git pciutils net-tools iputils ibssl-dev
+RUN dnf --quiet groupinstall "Development tools" -y
+RUN dnf --quiet install python3-pip numactl-devel -y
+RUN pip3 install pyelftools
 # Clone DPDK-dev to the container
 RUN cd && git clone git://dpdk.org/dpdk
 
 RUN pip3 install meson ninja
 RUN cd ~/dpdk && \
-    meson setup build -Dplatform=generic
+    meson setup build -Dplatform=generic -Dexamples=helloworld
 RUN cd ~/dpdk/build && \
     ninja
 #RUN cd ~/dpdk/build && \
