@@ -38,10 +38,17 @@ jobs:
       - 
         name: Test
         run: |
-          docker run --rm ${{ env.UBUNTU_DOC_TEST_TAG }}
+          docker run --rm --privileged  --cap-add=ALL \
+          -v /sys/bus/pci/devices:/sys/bus/pci/devices \
+          -v /sys/kernel/mm/hugepages:/sys/kernel/mm/hugepages \
+          -v /sys/devices/system/node:/sys/devices/system/node \
+          -v /dev:/dev \
+          -v /home/$USER:/home/$USER \
+          --name ubuntu-dpdk ${{ env.UBUNTU_DOC_TEST_TAG }} bash -c "/root/dpdk/usertools/dpdk-hugepages.py -p 2048K --setup 2M --node 0 && cat /proc/meminfo | grep HugePages"
 
       - 
         name: Build and push
+        if: github.ref_name == 'master' || github.ref_name == 'main'
         uses: docker/build-push-action@v6
         with:
           platforms: linux/amd64
@@ -77,10 +84,17 @@ jobs:
       - 
         name: Test
         run: |
-          docker run --rm ${{ env.RHEL_DOC_TEST_TAG }}
+          docker run --rm --privileged  --cap-add=ALL \
+          -v /sys/bus/pci/devices:/sys/bus/pci/devices \
+          -v /sys/kernel/mm/hugepages:/sys/kernel/mm/hugepages \
+          -v /sys/devices/system/node:/sys/devices/system/node \
+          -v /dev:/dev \
+          -v /home/$USER:/home/$USER \
+          --name ubuntu-dpdk ${{ env.RHEL_DOC_TEST_TAG }} bash -c "/root/dpdk/usertools/dpdk-hugepages.py -p 2048K --setup 2M --node 0 && cat /proc/meminfo | grep HugePages"
 
       - 
         name: Build and push
+        if: github.ref_name == 'master' || github.ref_name == 'main'
         uses: docker/build-push-action@v6
         with:
           platforms: linux/amd64
