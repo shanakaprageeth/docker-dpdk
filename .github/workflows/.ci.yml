@@ -44,7 +44,7 @@ jobs:
           -v /sys/devices/system/node:/sys/devices/system/node \
           -v /dev:/dev \
           -v /home/$USER:/home/$USER \
-          --name ubuntu-dpdk -it  ${{ env.UBUNTU_DOC_TEST_TAG }} bash -c "/root/dpdk/usertools/dpdk-hugepages.py -p 2048K --setup 2M --node 0 && cat /proc/meminfo | grep HugePages"
+          --name ubuntu-dpdk ${{ env.UBUNTU_DOC_TEST_TAG }} bash -c "/root/dpdk/usertools/dpdk-hugepages.py -p 2048K --setup 2M --node 0 && cat /proc/meminfo | grep HugePages"
 
       - 
         name: Build and push
@@ -90,7 +90,7 @@ jobs:
           -v /sys/devices/system/node:/sys/devices/system/node \
           -v /dev:/dev \
           -v /home/$USER:/home/$USER \
-          --name ubuntu-dpdk -it  ${{ env.RHEL_DOC_TEST_TAG }} bash -c "/root/dpdk/usertools/dpdk-hugepages.py -p 2048K --setup 2M --node 0 && cat /proc/meminfo | grep HugePages"
+          --name ubuntu-dpdk ${{ env.RHEL_DOC_TEST_TAG }} bash -c "/root/dpdk/usertools/dpdk-hugepages.py -p 2048K --setup 2M --node 0 && cat /proc/meminfo | grep HugePages"
 
       - 
         name: Build and push
