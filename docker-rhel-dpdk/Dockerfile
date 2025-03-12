@@ -17,7 +17,7 @@ LABEL version="1.0"
 
 # Install DPDK support packages.
 RUN dnf --quiet update -y
-RUN dnf --quiet install -y libhugetlbfs libpcap kernel kernel-devel kernel-headers git pciutils net-tools iputils ibssl-dev
+RUN dnf --quiet install -y libhugetlbfs libpcap kernel kernel-devel kernel-headers git pciutils net-tools iputils libssl-dev
 RUN dnf --quiet groupinstall "Development tools" -y
 RUN dnf --quiet install python3-pip numactl-devel -y
 RUN pip3 install pyelftools
