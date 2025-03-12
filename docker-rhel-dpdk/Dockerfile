@@ -25,9 +25,9 @@ RUN cd && git clone git://dpdk.org/dpdk
 
 RUN pip3 install meson ninja
 RUN cd ~/dpdk && \
-    meson setup build
-#RUN cd ~/dpdk/build && \
-#    ninja
+    meson setup build -Dplatform=generic
+RUN cd ~/dpdk/build && \
+    ninja
 #RUN cd ~/dpdk/build && \
 #    mason install && \
 #    ldconfig 

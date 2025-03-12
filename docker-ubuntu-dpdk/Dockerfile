@@ -32,7 +32,7 @@ RUN apt-get install -y python3-venv
 RUN python3 -m venv /opt/venv
 RUN /opt/venv/bin/pip install meson ninja
 RUN cd ~/dpdk && \
-    meson setup build --prefix=/opt/venv
+    meson setup build --prefix=/opt/ -Dplatform=generic -Dexamples=l2fwd,l3fwd
 RUN cd ~/dpdk/build && \
     ninja
 #RUN cd ~/dpdk/build && \
