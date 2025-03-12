@@ -38,6 +38,7 @@ else
         --name ubuntu-dpdk -it  shanakaprageeth/ubuntu24-dpdk bash
 fi
 
-
+#docker exec ubuntu-dpdk bash -c "/root/dpdk/usertools/dpdk-hugepages.py -p 2048K --setup 2M --node 0"
+#docker exec ubuntu-dpdk bash -c "cat /proc/meminfo | grep HugePages"
 
 

@@ -1,10 +1,12 @@
 ![Docker build](https://github.com/shanakaprageeth/docker-dpdk/actions/workflows/.ci.yml/badge.svg)
 
-# docker-dpdk for ubuntu and rhel
+# docker-dpdk for ubuntu and RockyLinux/Rhel
 
-These scripts will create a docker container to build and run dpdk-dev on docker in ubuntu or rocylinux/rhel host machines, Please use the same 
-OS container. Ubuntu container contains a prebuild dpdk source. However, rhel or rockylinux container only contains the source configuration that require you to build yourself. Please refer to Dockerfile comments.
-Also you can use the home directory to mount pre-build dpdk source in to docker.
+Note: Current RHEL images use RockyLinux. Please edit the Dockerfile to build RHEL yourself. You might require to fill RHEL subscription details in Dockerfile.
+
+These scripts will create a docker container to build and run dpdk-dev on docker in ubuntu or rocylinux/rhel host machines. The containers contains a prebuild dpdk source.
+You have to configure host machine for huge pages and mount drivers to docker. Please refer the install-image-with-docker.sh command.
+In adiitionally, this script will mount your home directory to container. Please comment this out in production as it will mount your secrets such as .ssh to container.
 
 ## Getting Started
 
@@ -34,7 +36,29 @@ execute following script with administrative privillages to create the docker co
 ./install-image-with-docker.sh 
 ``` 
 
-Afterwards, build and setup dpdk inside the container
+### About Exeucting the container
+
+Following docker container options and mounts are required for dpdk
+
+```
+# Ubuntu
+docker run --privileged  --cap-add=ALL \
+        -v /sys/bus/pci/devices:/sys/bus/pci/devices \
+        -v /sys/kernel/mm/hugepages:/sys/kernel/mm/hugepages \
+        -v /sys/devices/system/node:/sys/devices/system/node \
+        -v /dev:/dev \
+        -v /home/$USER:/home/$USER \
+        --name ubuntu-dpdk -it  shanakaprageeth/ubuntu24-dpdk bash
+
+#RockyLinux
+docker run --privileged  --cap-add=ALL \
+        -v /sys/bus/pci/devices:/sys/bus/pci/devices \
+        -v /sys/kernel/mm/hugepages:/sys/kernel/mm/hugepages \
+        -v /sys/devices/system/node:/sys/devices/system/node \
+        -v /dev:/dev \
+        -v /home/$USER:/home/$USER \
+        --name rhel-dpdk -it  shanakaprageeth/rhel8-dpdk bash
+```
 
 ## Old version
 
