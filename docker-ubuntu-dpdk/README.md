@@ -1,11 +1,15 @@
 ## docker ubuntu dpdk
-To execute the prebuild container
-```
-./install-image-with-docker.sh
-```
 
+### Prebuild images
+To execute the prebuild image from docker hub
+```
+./run_docker_dpdk.sh
+```
+### Locally build images
 To build and execute the container
 ```
-./install-image-with-docker.sh build
+./run_docker_dpdk.sh build
 ```
-Build location ~/dpdk/build
+
+### DPDK path inside container
+Build location /root/dpdk

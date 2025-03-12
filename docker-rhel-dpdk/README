@@ -1,14 +1,27 @@
-Note: Please edit rhel subscription manager USERNAME and PASSWORD or else set up yum in DOCKERFILE.
-additionally, dpdk source configuration works but build fails.
-## docker ubuntu dpdk
-To execute the prebuild container
+### Note 
+If you would like to use RHEL instead of RockyLinux
+Please edit rhel subscription manager USERNAME and PASSWORD or else set up dnf in DOCKERFILE.
 ```
-./install-image-with-docker.sh
+# for rocky linux
+FROM rockylinux:8.9
+# for RHEL
+#FROM redhat/ubi8:latest
+
+# RHEL subscription
+#RUN subscription-manager register --username USERNAME --password PASSWORD
+#RUN subscription-manager attach --auto
 ```
 
+### Prebuild images
+To execute the prebuild image from docker hub
+```
+./run_docker_dpdk.sh
+```
+### Locally build images
 To build and execute the container
 ```
-./install-image-with-docker.sh build
+./run_docker_dpdk.sh build
 ```
 
-Build location ~/dpdk/build
+### DPDK path inside container
+Build location /root/dpdk
