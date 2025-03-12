@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Login to Docker Hub
+        if: github.ref_name == 'master' || github.ref_name == 'main'
         uses: docker/login-action@v3
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
@@ -28,7 +29,7 @@ jobs:
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       -
-        name: Build and push
+        name: Build Ubuntu-dpdk Test Image
         uses: docker/build-push-action@v6
         with:
           load: true
@@ -36,23 +37,20 @@ jobs:
           file: ./docker-ubuntu-dpdk/Dockerfile
           tags: ${{ env.UBUNTU_DOC_TEST_TAG }}
       - 
-        name: Test
+        name: Test Ubuntu Container
         run: |
           ./ci_tests.sh ${{ env.UBUNTU_DOC_TEST_TAG }}
       - 
-        name: Build and push
+        name: Retag and Push Ubuntu-dpdk Image
         if: github.ref_name == 'master' || github.ref_name == 'main'
-        uses: docker/build-push-action@v6
-        with:
-          platforms: linux/amd64
-          push: true
-          context: ./docker-ubuntu-dpdk/
-          file: ./docker-ubuntu-dpdk/Dockerfile
-          tags: ${{ env.UBUNTU_DOC_LATEST_TAG }}
+        run: |
+          docker tag ${{ env.UBUNTU_DOC_TEST_TAG }} ${{ env.UBUNTU_DOC_LATEST_TAG }}
+          docker push ${{ env.UBUNTU_DOC_LATEST_TAG }}
   rhel-dpdk:
     runs-on: ubuntu-latest
     steps:
       - name: Login to Docker Hub
+        if: github.ref_name == 'master' || github.ref_name == 'main'
         uses: docker/login-action@v3
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
@@ -67,7 +65,7 @@ jobs:
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       -
-        name: Build and push
+        name: Build RHEL Test Image
         uses: docker/build-push-action@v6
         with:
           load: true
@@ -75,17 +73,12 @@ jobs:
           file: ./docker-rhel-dpdk/Dockerfile
           tags: ${{ env.RHEL_DOC_TEST_TAG }}
       - 
-        name: Test
+        name: Test RHEL Container
         run: |
           ./ci_tests.sh ${{ env.RHEL_DOC_TEST_TAG }}
-
       - 
-        name: Build and push
+        name: Retag and Push RHEL Image
         if: github.ref_name == 'master' || github.ref_name == 'main'
-        uses: docker/build-push-action@v6
-        with:
-          platforms: linux/amd64
-          push: true
-          context: ./docker-rhel-dpdk/
-          file: ./docker-rhel-dpdk/Dockerfile
-          tags: ${{ env.RHEL_DOC_LATEST_TAG }}
+        run: |
+          docker tag ${{ env.RHEL_DOC_TEST_TAG }} ${{ env.RHEL_DOC_LATEST_TAG }}
+          docker push ${{ env.RHEL_DOC_LATEST_TAG }}
