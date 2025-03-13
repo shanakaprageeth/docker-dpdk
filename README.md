@@ -1,33 +1,33 @@
 ![Docker build](https://github.com/shanakaprageeth/docker-dpdk/actions/workflows/.ci.yml/badge.svg?branch=master)
 
-# docker-dpdk for ubuntu and RockyLinux/Rhel
+# Docker-dpdk for Ubuntu and RockyLinux/Rhel
 
-Note: Current RHEL images use RockyLinux. Please edit the Dockerfile to build RHEL yourself. You might require to fill RHEL subscription details in Dockerfile.
+Note: Current RHEL images use RockyLinux. Please edit the Dockerfile to build RHEL yourself. You might require to fill RHEL subscription details in Dockerfile for RHEL.
 
-These scripts will create a docker container to build and run dpdk-dev on docker in ubuntu or rocylinux/rhel host machines. The containers contains a prebuild dpdk source.
-You have to configure host machine for huge pages and mount drivers to docker. Please refer the install-image-with-docker.sh command.
-In adiitionally, this script will mount your home directory to container. Please comment this out in production as it will mount your secrets such as .ssh to container.
-These scripts will create a docker container to build and run dpdk-dev on docker in ubuntu or rocylinux/rhel host machines. The containers contains a prebuild dpdk source.
-You have to configure host machine for huge pages and mount drivers to docker. Please refer the install-image-with-docker.sh command.
+These scripts will create a docker image to build and run dpdk-dev on docker in ubuntu or rockylinux/rhel host machines. The containers contains a prebuild dpdk source.
+You have to configure host machine for huge pages and mount drivers to docker.
 In adiitionally, this script will mount your home directory to container. Please comment this out in production as it will mount your secrets such as .ssh to container.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
 ### Prerequisites
 
-RockyLinux/RHEL or Ubuntu installation.
-DPDK supported NIC.
-Docker-deamon.
+RockyLinux/RHEL or Ubuntu installation with amd64 architecture.
+DPDK supported NIC (optional)
+Docker-deamon
 
 ### Current Prebuild docker images
+
+[shanakaprageeth/ubuntu24-dpdk](https://hub.docker.com/r/shanakaprageeth/ubuntu24-dpdk)
+
+[shanakaprageeth/rhel8-dpdk](https://hub.docker.com/r/shanakaprageeth/rhel8-dpdk)
+
 ```
 docker pull shanakaprageeth/ubuntu24-dpdk
 docker pull shanakaprageeth/rhel8-dpdk
 ```
 
-### Executing prebuild images or Building Images yourself
+### Executing prebuild images or Building images as a container
 
 #### For Ubuntu
 execute following script with administrative privillages to create the docker container.
@@ -35,10 +35,9 @@ Use build optional argument to build the container yourself
 ```
 cd docker-ubuntu-dpdk
 ./run_docker_dpdk.sh
+# to build yourself and execute
+#./run_docker_dpdk.sh build
 ```
-OR 
-use my docker-dpdk image on docker hub
-[shanakaprageeth/ubuntu24-dpdk](https://hub.docker.com/r/shanakaprageeth/ubuntu24-dpdk)
 
 #### For RockyLinux/RHEL
 
@@ -46,7 +45,8 @@ Please edit rhel subscription manager USERNAME and PASSWORD or else set up yum i
 execute following script with administrative privillages to create the docker container.
 ```
 cd docker-rhel-dpdk
-./run_docker_dpdk.sh
+# to build yourself and execute
+#./run_docker_dpdk.sh build
 ``` 
 
 ### Container options
