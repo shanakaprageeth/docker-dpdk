@@ -78,7 +78,7 @@ docker run --privileged  --cap-add=ALL \
 Please refer to branch/tag 1.0 for old Docker images with 16.X dpdk with dpdk-setup.sh [1.0](https://github.com/shanakaprageeth/docker-dpdk/tree/1.0.0)
 ```
 # Not managed
-docker pull shanakaprageeth/ubuntu-dpdk
+docker pull shanakaprageeth/ubuntu-dpdk:2018
 ```
 
 ## Acknowledgments
