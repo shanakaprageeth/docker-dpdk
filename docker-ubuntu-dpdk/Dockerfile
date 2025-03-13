@@ -17,7 +17,10 @@ RUN apt-get --quiet update -y && \
     apt-get --quiet install -y tzdata && \
     ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && \
     dpkg-reconfigure --frontend noninteractive tzdata && \
-    apt-get install -y build-essential git python3 pciutils vim dpdk dpdk-dev libdpdk-dev sudo software-properties-common
+    apt-get install -y build-essential git python3 pciutils vim sudo software-properties-common
+
+# Use apt dpdk packages without building
+#RUN apt-get --quiet update -y && apt-get --quiet install -y dpdk dpdk-dev libdpdk-dev
 
 RUN add-apt-repository ppa:canonical-kernel-team/ppa && \
     apt update
@@ -43,7 +46,3 @@ RUN cd ~/dpdk/build && \
 WORKDIR /root
 # set the default command to run the container
 CMD ["bash"]
-
-
-
-

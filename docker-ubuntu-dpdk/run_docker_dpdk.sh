@@ -40,5 +40,4 @@ fi
 
 #docker exec ubuntu-dpdk bash -c "/root/dpdk/usertools/dpdk-hugepages.py -p 2048K --setup 2M --node 0"
 #docker exec ubuntu-dpdk bash -c "cat /proc/meminfo | grep HugePages"
-
-
+#docker exec ubuntu-dpdk bash -c "/root/dpdk/build/examples/dpdk-helloworld -l 0-1 -n 1"

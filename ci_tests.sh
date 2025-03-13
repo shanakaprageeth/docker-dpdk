@@ -42,4 +42,4 @@ docker run --rm --privileged  --cap-add=ALL \
           -v /sys/devices/system/node:/sys/devices/system/node \
           -v /dev:/dev \
           -v /home/$USER:/home/$USER \
-          --name docker-dpdk $IMAGE_NAME bash -c "/root/dpdk/usertools/dpdk-hugepages.py -p 2048K --setup 2M --node 0 && /root/dpdk/examples/dpdk-helloworld -l 0-1 -n 1"
+          --name docker-dpdk $IMAGE_NAME bash -c "/root/dpdk/usertools/dpdk-hugepages.py -p 2048K --setup 2M --node 0 && /root/dpdk/build/examples/dpdk-helloworld -l 0-1 -n 1"

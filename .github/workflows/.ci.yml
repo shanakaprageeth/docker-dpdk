@@ -39,7 +39,7 @@ jobs:
       - 
         name: Test Ubuntu Container
         run: |
-          .sudo /ci_tests.sh ${{ env.UBUNTU_DOC_TEST_TAG }}
+          sudo /ci_tests.sh ${{ env.UBUNTU_DOC_TEST_TAG }}
       - 
         name: Retag and Push Ubuntu-dpdk Image
         if: github.ref_name == 'master' || github.ref_name == 'main'
