@@ -3,9 +3,6 @@
 # docker-dpdk for ubuntu and RockyLinux/Rhel
 
 Note: Current RHEL images use RockyLinux. Please edit the Dockerfile to build RHEL yourself. You might require to fill RHEL subscription details in Dockerfile.
-# docker-dpdk for ubuntu and RockyLinux/Rhel
-
-Note: Current RHEL images use RockyLinux. Please edit the Dockerfile to build RHEL yourself. You might require to fill RHEL subscription details in Dockerfile.
 
 These scripts will create a docker container to build and run dpdk-dev on docker in ubuntu or rocylinux/rhel host machines. The containers contains a prebuild dpdk source.
 You have to configure host machine for huge pages and mount drivers to docker. Please refer the install-image-with-docker.sh command.
