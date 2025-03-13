@@ -1,6 +1,6 @@
 #!/bin/bash -ex
 # author Shanaka Prageeth
-# details about the script
+# details this script will execute rhel-dpdk container based on rhel8-dpdk docker image
 
 DEBIAN_FRONTEND=noninteractive
 PROGRAM_NAME="$(basename $0)"
@@ -27,8 +27,6 @@ else
         --name rhel-dpdk -it  shanakaprageeth/rhel8-dpdk bash
 fi
 
-#docker exec rhel-dpdk bash -c "/root/dpdk/usertools/dpdk-hugepages.py -p 2048K --setup 2M --node 0"
+#docker exec rhel-dpdk bash -c "/root/dpdk/usertools/dpdk-hugepages.py -p 2048K --setup 2M --node 0 && cat /proc/meminfo | grep HugePages"
 #docker exec rhel-dpdk bash -c "cat /proc/meminfo | grep HugePages"
-
-
-
+#docker exec rhel-dpdk bash -c "/root/dpdk/build/examples/dpdk-helloworld -l 0-1 -n 1"

@@ -6,7 +6,7 @@ LABEL maintainer="shanakaprageeth"
 
 # set the image name and version
 LABEL name="ubuntu24-dpdk"
-LABEL version="1.0"
+LABEL version="1.1"
 
 # set environment variables for noninteractive mode
 ENV DEBIAN_FRONTEND=noninteractive
@@ -17,7 +17,10 @@ RUN apt-get --quiet update -y && \
     apt-get --quiet install -y tzdata && \
     ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && \
     dpkg-reconfigure --frontend noninteractive tzdata && \
-    apt-get install -y build-essential git python3 pciutils vim dpdk dpdk-dev libdpdk-dev sudo software-properties-common
+    apt-get install -y build-essential git python3 pciutils vim sudo software-properties-common
+
+# Use apt dpdk packages without building
+#RUN apt-get --quiet update -y && apt-get --quiet install -y dpdk dpdk-dev libdpdk-dev
 
 RUN add-apt-repository ppa:canonical-kernel-team/ppa && \
     apt update
@@ -36,18 +39,10 @@ RUN cd ~/dpdk && \
     meson setup build --prefix=/opt/ -Dplatform=generic -Dexamples=l2fwd,l3fwd,helloworld
 RUN cd ~/dpdk/build && \
     ninja
-#RUN cd ~/dpdk/build && \
-#    /opt/venv/bin/meson install && \
-#    ldconfig 
+RUN cd ~/dpdk/build && \
+    meson install && \
+    ldconfig
 # copy updated main docker build script to repo.
 WORKDIR /root
-# old script from 2019 do not use 
-#COPY ./dpdk-setup.sh /root/dpdk/tools/
-RUN mkdir -p /root/old/
-COPY ./dpdk-setup.sh /root/old/
 # set the default command to run the container
 CMD ["bash"]
-
-
-
-
