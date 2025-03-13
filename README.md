@@ -41,7 +41,7 @@ cd docker-ubuntu-dpdk
 ```
 OR 
 use my docker-dpdk image on docker hub
-[shanakaprageeth/ubuntu-dpdk](https://hub.docker.com/r/shanakaprageeth/ubuntu24-dpdk)
+[shanakaprageeth/ubuntu24-dpdk](https://hub.docker.com/r/shanakaprageeth/ubuntu24-dpdk)
 
 #### For RockyLinux/RHEL
 
