@@ -26,7 +26,7 @@ RUN add-apt-repository ppa:canonical-kernel-team/ppa && \
     apt update
 
 RUN apt --quiet install python3-pip python3-pyelftools -y
-RUN apt-get --quiet update -y && apt-get --quiet install -y libnuma-dev linux-image-generic linux-headers-generic net-tools libssl-dev ninja-build
+RUN apt-get --quiet update -y && apt-get --quiet install -y pkg-config dpdk dpdk-dev libdpdk-dev libnuma-dev linux-image-generic linux-headers-generic net-tools libssl-dev ninja-build
 # if you can find kernel images install the specifc image and headers below
 #    apt-get install -y linux-image-$(uname -r) linux-headers-$(uname -r)
 
