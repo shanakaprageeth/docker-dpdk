@@ -1,6 +1,6 @@
 ![Docker build](https://github.com/shanakaprageeth/docker-dpdk/actions/workflows/.ci.yml/badge.svg?branch=master)
 
-# Docker-dpdk for Ubuntu and RockyLinux/Rhel
+# Docker-dpdk for Ubuntu and RockyLinux/RHEL
 
 Note: Current RHEL images use RockyLinux. Please edit the Dockerfile to build RHEL yourself. You might require to fill RHEL subscription details in Dockerfile for RHEL.
 
@@ -72,6 +72,9 @@ docker run --privileged  --cap-add=ALL \
         -v /home/$USER:/home/$USER \
         --name rhel-dpdk -it  shanakaprageeth/rhel8-dpdk bash
 ```
+
+## Additional Features
+Currently these containers can support Fstack DPDK based network stack (https://github.com/F-Stack/f-stack/blob/dev/.github/workflows/ci.yml)
 
 ## Old version
 [depreciated]
